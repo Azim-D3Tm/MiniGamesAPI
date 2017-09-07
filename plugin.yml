@@ -1,0 +1,19 @@
+name: MiniGamesAPI
+main: ru.stormcraft.mgapi.Main
+version: 0.9.dev
+#load: STARTUP
+author: Azim
+depend: [WorldEdit]
+commands:
+  save:
+    description: mgapi save
+    aliases: savearena
+    permission: mgapi.save
+  reset:
+    description: mgapi reset
+    aliases: resetarena
+    permission: mgapi.reset
+  new:
+    description: mgapi new
+    aliases: newarena
+    permission: mgapi.new
