@@ -23,6 +23,7 @@ import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldedit.data.DataException;
 import com.sk89q.worldedit.schematic.SchematicFormat;
 import com.sk89q.worldedit.session.ClipboardHolder;
+
 @SuppressWarnings("deprecation")
 public class Schematic {
 	
@@ -37,10 +38,10 @@ public class Schematic {
             if (!dir.exists())
                 dir.mkdirs();
 
-            WorldEditPlugin wep = (WorldEditPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldEdit");
-            WorldEdit we = wep.getWorldEdit();
+            //WorldEditPlugin wep = (WorldEditPlugin) Bukkit.getServer().getPluginManager().getPlugin("WorldEdit");
+            WorldEdit we = Main.worldEdit.getWorldEdit();
 
-            LocalPlayer localPlayer = wep.wrapPlayer(player);
+            LocalPlayer localPlayer = Main.worldEdit.wrapPlayer(player);
             
             
             LocalSession localSession = we.getSession(localPlayer);
@@ -74,7 +75,7 @@ public class Schematic {
     }
 
 
-public static boolean paste(String schematicName, Location pasteLoc) {
+	public static boolean paste(String schematicName, Location pasteLoc) {
         try {
             File dir = new File(Main.PLUGIN.getDataFolder(), "/schematics/" + schematicName);
 

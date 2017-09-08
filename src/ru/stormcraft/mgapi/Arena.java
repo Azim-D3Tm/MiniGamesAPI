@@ -20,7 +20,11 @@ public class Arena {
 			temploc = Schematic.save(player, this.name);
 			if(temploc!=null){
 				this.loc = temploc;
-				
+				Main.PLUGIN.getConfig().set("arenas."+name+".location.x", loc.getX());
+				Main.PLUGIN.getConfig().set("arenas."+name+".location.y", loc.getY());
+				Main.PLUGIN.getConfig().set("arenas."+name+".location.z", loc.getZ());
+				Main.PLUGIN.getConfig().set("arenas."+name+".location.world", loc.getWorld().getName());
+				Main.PLUGIN.saveConfig();
 				return true;
 			}
 		}
