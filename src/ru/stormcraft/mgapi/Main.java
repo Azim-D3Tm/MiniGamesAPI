@@ -3,11 +3,16 @@ package ru.stormcraft.mgapi;
 import java.util.ArrayList;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import ru.stormcraft.mgapi.utils.NBTEditor;
+import ru.stormcraft.paintball.EventListener;
 
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 
@@ -25,6 +30,14 @@ public class Main extends JavaPlugin{
 		getLogger().info("Hooked onto WE!");
 		PLUGIN = this;
 		config = getConfig();
+		Bukkit.getPluginManager().registerEvents(new EventListener(), this);
+		
+		ItemStack item = new ItemStack( Material.WOOD_HOE );
+	    
+		item = NBTEditor.setItemTag(item,"TEST VALUE","Test Key");
+		Object val = NBTEditor.getItemTag(item, "Test Key");
+		
+		System.out.println("test "+val);
 	}
 	
 	@Override
@@ -40,7 +53,7 @@ public class Main extends JavaPlugin{
 				if(label.equals("new")){
 					Arena ar = new Arena(args[0],player.getLocation() );
 					Arenas.add(ar);
-					getLogger().info("success!");
+					getLogger().info("Successfully created arena `"+args[0]+"`");
 					return true;
 				}
 				if(label.equals("save")){
