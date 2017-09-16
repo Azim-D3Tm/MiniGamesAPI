@@ -17,3 +17,6 @@ commands:
     description: mgapi new
     aliases: newarena
     permission: mgapi.new
+  gun:
+    description: mgapi gun
+    permission: mgapi.gun

@@ -32,12 +32,6 @@ public class Main extends JavaPlugin{
 		config = getConfig();
 		Bukkit.getPluginManager().registerEvents(new EventListener(), this);
 		
-		ItemStack item = new ItemStack( Material.WOOD_HOE );
-	    
-		item = NBTEditor.setItemTag(item,"TEST VALUE","Test Key");
-		Object val = NBTEditor.getItemTag(item, "Test Key");
-		
-		System.out.println("test "+val);
 	}
 	
 	@Override
@@ -70,6 +64,13 @@ public class Main extends JavaPlugin{
 					}
 					return false;
 				}
+				
+				
+			}
+			if(label.equals("gun")){
+				ItemStack item = new ItemStack( Material.WOOD_HOE,1 );
+				item = NBTEditor.setItemTag( item, "wooden","PBgun");
+				player.getInventory().addItem(item);
 			}
 		}
 		return false;

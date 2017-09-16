@@ -1,5 +1,9 @@
 package ru.stormcraft.mgapi;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.UUID;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -13,6 +17,9 @@ public class Arena {
 	public enum States { RUNNING , WAITING, STOPPED };
 	@SuppressWarnings("unused")
 	private States state;
+	
+	public HashMap<Player,List<UUID>> playershots;
+	public HashMap<String,Player> players;
 	
 	public boolean save(Player player){
 		if(player!= null){
@@ -65,4 +72,7 @@ public class Arena {
 		this.name = name;
 		this.loc = new Location(Bukkit.getWorld(worldName),x,y,z);
 	}
+	
+	
+	
 }
